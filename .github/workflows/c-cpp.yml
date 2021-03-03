@@ -1,0 +1,21 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: configure
+      run: python2 ./waf-1.5.18 configure
+    - name: make
+      run: python2 ./waf-1.5.18 
+    - name: make release
+      run: python2 ./waf-1.5.18 release
